@@ -36,47 +36,55 @@ Things you may want to cover:
 |birthday|date|null:false|
 
 ### Association
-has_many :items
-has_many :orders
+has_many :posts
+has_many :comments
+has_many :circles
+has_many :threads
 
-## Items
+## Posts
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
 |category_id|integer|null:false|
-|price|integer|null:false|
+|key_word_id|integer|null:false|
 |explanation|text|null:false|
-|status_id|integer|null:false|
-|delivery_cost_id|integer|null:false|
-|prefecture_id|integer|null:false|
-|day_id|integer|null:false|
 |user|references|foreign_key: true|
 
 ### Association
-has_one :order
 belongs_to :user
+has_many :comments
 
-## Orders
+## Comments
 |Column|Type|Options|
 |------|----|-------|
+|text|text|null:false|
 |user|references|foreign_key: true|
-|item|references|foreign_key: true|
+|post|references|foreign_key: true|
 
 ### Association
 belongs_to :user
-belongs_to :item
-has_one :address
+belongs_to :post
 
-## Addresses 
+## Circles 
 |Column|Type|Options|
 |------|----|-------|
-|postal_code|string|null:false|
-|prefecture_id|integer|null:false|
-|municipality|string|null:false|
-|building|string||
-|house_number|string|null:false|
-|tel_number|string|null:false|
-|order|references|null:false,foreign_key: true|
+|name|string|null:false|
+|category_id|integer|null:false|
+|key_word_id|integer|null:false|
+|explanation|text|null:false|
+|user|references|foreign_key: true|
 
 ### Association
-belongs_to :order
+has_many :users
+has_many :thread
+
+## Threads
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null:false|
+|user|references|foreign_key: true|
+|circle|references|foreign_key: true|
+
+### Association
+belongs_to :circle
+belongs_to :user
