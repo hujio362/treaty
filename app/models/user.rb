@@ -1,8 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :items
-  has_many :orders
+  has_many :posts
+  has_many :comments
+  has_many :circles
+  has_many :threads
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }
   validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, length: { minimum: 6 }, message: 'は6文字以上の英数混在で入力してください。'

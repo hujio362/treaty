@@ -46,7 +46,7 @@ has_many :threads
 |------|----|-------|
 |name|string|null:false|
 |category_id|integer|null:false|
-|key_word_id|integer||
+|keyword_id|integer||
 |explanation|text|null:false|
 |user|references|foreign_key: true|
 
@@ -70,7 +70,7 @@ belongs_to :post
 |------|----|-------|
 |name|string|null:false|
 |category_id|integer|null:false|
-|key_word_id|integer||
+|keyword_id|integer||
 |explanation|text|null:false|
 |user|references|foreign_key: true|
 

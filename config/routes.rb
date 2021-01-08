@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: "furimas#index"
+  root to: "homes#index"
   devise_for :users
-  resources :items, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
-    resources :orders, only: [:index, :create, :show]
-  end
+  resources :posts, only: [:new, :create, :index, :show, :edit, :destroy, :update] 
+  # do
+    # resources :orders, only: [:index, :create, :show]
+  # end
 end
