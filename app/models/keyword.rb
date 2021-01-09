@@ -1,4 +1,4 @@
-class Status < ActiveHash::Base
+class Keyword < ActiveHash::Base
   self.data = [
     { id: 1, name: '--' },
     { id: 2, name: 'お弁当' },

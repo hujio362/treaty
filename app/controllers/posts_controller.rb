@@ -1,18 +1,18 @@
-class ItemsController < ApplicationController
+class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :item_find, only: [:show, :edit, :update, :destroy]
+  before_action :post_find, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.order(id: :DESC)
+    @posts = Post.order(id: :DESC)
   end
 
   def new
-    @item = Item.new
+    @post = Post.new
   end
 
   def create
-    @item = Item.create(item_params)
-    if @item.save
+    @post = Post.create(post_params)
+    if @post.save
       redirect_to root_path
     else
       render :new
@@ -23,11 +23,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path if current_user.id != @item.user.id or @item.order != nil
+    redirect_to root_path if current_user.id != @post.user.id or @post.order != nil
   end
 
   def update
-    if @item.update(item_params)
+    if @post.update(post_params)
       redirect_to root_path
     else
       render :edit
@@ -35,19 +35,19 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @item.user.id
-      @item.destroy
+    if current_user.id == @post.user.id
+      @post.destroy
     end
       redirect_to root_path
   end
 
   private
 
-  def item_find
-    @item = Item.find(params[:id])
+  def post_find
+    @post = Post.find(params[:id])
   end
 
-  def item_params
-    params.require(:item).permit(:name, :category_id, :price, :explanation, :status_id, :delivery_cost_id, :prefecture_id, :day_id, :image).merge(user_id: current_user.id)
+  def post_params
+    params.require(:post).permit(:name, :category_id, :keyword_id, :explanation, :image).merge(user_id: current_user.id)
   end
 end
