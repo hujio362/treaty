@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :posts
+  has_many :facorites
+  has_many :fav_posts, through: :favorites, source: :post
   has_many :comments
   has_many :circles
   has_many :threads
@@ -19,4 +21,14 @@ class User < ApplicationRecord
     validates :first_name_kana
     validates :last_name_kana
   end
+
+  def like(post)
+    favorites.find_or_create_by(post_id: post.id)
+  end
+
+  def unlike(post)
+    favorite = favorites.find_by(post_id: post.id)
+    favorite.destroy if favorite
+  end
+
 end
