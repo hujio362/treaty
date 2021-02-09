@@ -100,27 +100,49 @@ belongs_to :user
 belongs_to :post
 
 ## Circles 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null:false|
-|category_id|integer|null:false|
-|keyword_id|integer||
-|explanation|text|null:false|
-|user|references|foreign_key: true|
+|Column     |Type      |Options          |
+|-----------|----------|-----------------|
+|name       |string    |null:false       |
+|category_id|integer   |null:false       |
+|keyword_id |integer   |                 |
+|explanation|text      |null:false       |
+|user       |references|foreign_key: true|
 
 ### Association
 has_many :users
 has_many :thread
 
+## circle_users テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| circle | references | null: false, foreign_key: true |
+
+### Association
+belongs_to :circle
+belongs_to :user
+
 ## Threads
 |Column|Type|Options|
 |------|----|-------|
+|name|string|null:false|
 |text|text|null:false|
 |user|references|foreign_key: true|
 |circle|references|foreign_key: true|
 
 ### Association
 belongs_to :circle
+belongs_to :user
+
+## ThreadComments
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null:false|
+|user|references|foreign_key: true|
+|thread|references|foreign_key: true|
+
+### Association
+belongs_to :thread
 belongs_to :user
 
 
