@@ -82,7 +82,7 @@ has_many :threads
 |category_id|integer|null:false|
 |keyword_id|integer||
 |explanation|text|null:false|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -92,8 +92,8 @@ has_many :comments
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null:false|
-|user|references|foreign_key: true|
-|post|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|post|references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -106,7 +106,7 @@ belongs_to :post
 |category_id|integer   |null:false       |
 |keyword_id |integer   |                 |
 |explanation|text      |null:false       |
-|user       |references|foreign_key: true|
+|user       |references|null: false, foreign_key: true|
 
 ### Association
 has_many :users
@@ -122,7 +122,7 @@ has_many :thread
 belongs_to :circle
 belongs_to :user
 
-## Threads
+## Topic
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null:false|
@@ -134,15 +134,15 @@ belongs_to :user
 belongs_to :circle
 belongs_to :user
 
-## ThreadComments
+## TopicComments
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null:false|
-|user|references|foreign_key: true|
-|thread|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|topic|references|null: false, foreign_key: true|
 
 ### Association
-belongs_to :thread
+belongs_to :topic
 belongs_to :user
 
 

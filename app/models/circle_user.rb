@@ -1,0 +1,2 @@
+class CircleUser < ApplicationRecord
+end
