@@ -73,7 +73,7 @@ admin
 has_many :posts
 has_many :comments
 has_many :circles
-has_many :threads
+has_many :topics
 
 ## Posts
 |Column|Type|Options|
@@ -110,7 +110,7 @@ belongs_to :post
 
 ### Association
 has_many :users
-has_many :thread
+has_many :topics
 
 ## circle_users テーブル
 | Column | Type       | Options                        |
@@ -133,6 +133,7 @@ belongs_to :user
 ### Association
 belongs_to :circle
 belongs_to :user
+has_many :topiccpmments
 
 ## TopicComments
 |Column|Type|Options|

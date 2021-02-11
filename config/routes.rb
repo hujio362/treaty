@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
   end
-  # do
-    # resources :orders, only: [:index, :create, :show]
-  # end
+  resources :circles, only: :index do
+    resources :topics, only: [:index, :create, :show, :new, :edit] do
+      resources :topiccomments
+    end
+  end
 end

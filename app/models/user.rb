@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :facorites
   has_many :fav_posts, through: :favorites, source: :post
   has_many :comments
-  has_many :circles
+  has_many :circles, through: :circle_users
   has_many :threads
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }

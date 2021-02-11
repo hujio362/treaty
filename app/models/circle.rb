@@ -1,5 +1,5 @@
 class Circle < ApplicationRecord
-  has_many :users
+  has_many :users, through: :circle_users
   has_many :thread
 
   with_options presence: true do
