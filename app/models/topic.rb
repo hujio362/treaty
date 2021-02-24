@@ -3,7 +3,7 @@ class Topic < ApplicationRecord
   belongs_to :user
   has_many :topiccomments
 
-  woth_opition presence: true do
+  with_options presence: true do
     validates :name
     validates :text
   end

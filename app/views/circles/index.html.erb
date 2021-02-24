@@ -1,10 +1,46 @@
-<h1>cirlcleページ</h1>
+<%= image_tag 'vegan.jpeg', class: "img-fluid"%>
+<div class="text-center">
+  <h1 class="display-1">cirlcleページ</h1>
 <p>これはエスニック料理のcirlcleページです。みんなでワイワイしましょう。</p>
 <p>ジャンル名：エスニック</p>
 <p>131 members</p>
-<h2>TOPIC</h2>
+</div>
+
+<div class="text-center">
+  <p class="h2">TOPIC</p>
 <ul>
   <li>- はじめまして！</li>
   <li>- 利用規約</li>
   <li>- パーティ参加者募集！</li>  
 </ul>
+
+<%= link_to(new_topic_path, class: 'purchase-btn') do %>
+  <span class='purchase-btn-text'>投稿する</span>
+  <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+<% end %>
+
+
+      <div class="row">
+
+          <% if @topics != nil %>
+            <% @topics.each do |topic| %>
+                <div class="col-lg-4 col-md-6 mb-4">
+                  <div class="card h-100">
+                    <%= link_to topic_path(topic) do %>
+                      <%= image_tag topic.image, class: "card-img-top" %>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <%= topic.name %>
+                        </h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                      </div>
+                      <div class="card-footer">
+                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+          <% end %>
+
+      </div>

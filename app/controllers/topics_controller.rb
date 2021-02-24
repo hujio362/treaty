@@ -1,8 +1,8 @@
 class TopicsController < ApplicationController
-  before_action :set_topic, only[:edit, :show]
+  before_action :set_topic, only: [:edit, :show]
   
   def index
-    @topic = Topic.order[id: :DESC]
+    @topics = Topic.order[id: :DESC]
   end
   
   def create
