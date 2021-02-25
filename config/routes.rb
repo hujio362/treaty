@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
  
-  resources :circles, only: :index
+  resources :circles, only: [:index, :new, :create, :show]
 
   resources :topics, shallow: true do
     resources :topiccomments, only: [:new, :create]

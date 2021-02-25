@@ -2,15 +2,15 @@
 
   </header>
   <div class="items-sell-main">
-    <h2 class="items-sell-title">新規投稿</h2>
-    <%= form_with model: @post, local: true do |f| %>
+    <h2 class="items-sell-title">新規サークル</h2>
+    <%= form_with model: @circle, local: true do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
    
-    <%# 出品画像 %>
+   
     <div class="img-upload">
       <div class="weight-bold-text">
-        画像
+        トップ画像
         <span class="indispensable">必須</span>
       </div>
       <div class="click-upload">
@@ -32,13 +32,7 @@
           説明
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"投稿の説明" ,rows:"7" ,maxlength:"1000" %>
-      </div>
-      <div class="items-explain">
-        <div class="weight-bold-text">
-          レシピ
-        </div>
-        <%= f.text_area :recipe, class:"items-text", id:"item-info", placeholder:"recipe" ,rows:"7" ,maxlength:"1000" %>
+        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"サークルページのTOPに表示されます。" ,rows:"7" ,maxlength:"1000" %>
       </div>
     </div>
 
@@ -57,11 +51,9 @@
         <%= f.collection_select(:keyword_id, Keyword.all, :id, :name, {}, {class:"select-box", id:"post-keyword"}) %>
       </div>
     </div>
-    <%# /商品の詳細 %>
-
 
     <div class="sell-btn-contents">
-      <%= f.submit "投稿する" ,class:"sell-btn" %>
+      <%= f.submit "つくる" ,class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>

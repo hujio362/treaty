@@ -3,16 +3,18 @@
 
     <div class="row">
 
-      <div class="col-lg-3">
+          <div class="col-lg-3">
+            <h1 class="my-4">　</h1>
+              <div class="list-group">
+                <% if @circles[0] != nil %>
+                  <% @circles.each do |circle| %>
+                    <%= link_to circle.name, circle_path(circle), class: "list-group-item" %>
+                  <% end %>
+                <% end %>
+              <%= link_to "create new circle", new_circle_path, class: "list-group-item-create" %>
+            </div>
+          </div>
 
-        <h1 class="my-4">　</h1>
-         <div class="list-group">
-          <a href="circles" class="list-group-item">veganist circle</a>
-          <a href="#" class="list-group-item">love sweets!</a>
-          <a href="#" class="list-group-item">chinese</a>
-        </div>
-
-      </div>
       <!-- /.col-lg-3 -->
 
       <div class="col-lg-9">
@@ -85,12 +87,11 @@
                       <%= image_tag post.image, class: "card-img-top" %>
                       <div class="card-body">
                         <h4 class="card-title">
-                          <%= post.name %>
-                        </h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+                          <%= post.name %></h4>
+                          <span class="badge rounded-pill bg-light text-dark my-2"><%= post.category.name %></span>
+                        <%# <p class="card-text"><%= post.explanation %>
                       </div>
                       <div class="card-footer">
-                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                       </div>
                     <% end %>
                   </div>

@@ -1,9 +1,9 @@
-<%= image_tag 'vegan.jpeg', class: "img-fluid"%>
+<%= image_tag @circle.image, class: "img-fluid"%>
 <div class="text-center">
-  <h1 class="display-3 my-3">cirlcleページ</h1>
-<span class="badge rounded-pill bg-secondary text-white">エスニック</span>
+  <h1 class="display-3 my-3"><%= @circle.name %></h1>
+<span class="badge rounded-pill bg-light text-dark"><%= @circle.category.name %></span>
 <p class="my-0.5">131 members</p>
-<p class="lead my-3">これはエスニック料理のcirlcleページです。みんなでワイワイしましょう。</p>
+<p class="lead my-3"><%= @circle.explanation %></p>
 </div>
 
 <%= link_to new_topic_path do %>

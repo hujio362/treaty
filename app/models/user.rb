@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :fav_posts, through: :favorites, source: :post
   has_many :comments
   has_many :circles, through: :circle_users
-  has_many :threads
+  has_many :topics
 
   validates :nickname, presence: true, uniqueness: { case_sensitive: true }
   validates_format_of :password, with: /([0-9].*[a-zA-Z]|[a-zA-Z].*[0-9])/, length: { minimum: 6 }, message: 'は6文字以上の英数混在で入力してください。'

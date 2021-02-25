@@ -7,6 +7,11 @@ class TopicsController < ApplicationController
   
   def create
     @topic = Topic.create(topic_params)
+    if @topic.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -23,7 +28,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:image, :text).merge(user_id: current_user.id)
+    params.require(:topic).permit(:name, :image, :text).merge(user_id: current_user.id, circle_id: params[:circle_id])
   end
 
   def set_topic
