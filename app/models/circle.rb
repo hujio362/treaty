@@ -1,6 +1,6 @@
 class Circle < ApplicationRecord
   has_many :users, through: :circle_users
-  has_many :topic
+  has_many :topics
   has_one_attached :image
 
   with_options presence: true do

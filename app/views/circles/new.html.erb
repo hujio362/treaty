@@ -3,7 +3,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">新規サークル</h2>
-    <%= form_with model: @circle, local: true do |f| %>
+    <%= form_with (model: [@circle, @topic], local: true) do |f| %>
 
     <%= render 'shared/error_messages', model: f.object %>
    

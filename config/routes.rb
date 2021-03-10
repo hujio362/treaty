@@ -11,8 +11,7 @@ Rails.application.routes.draw do
  
   resources :circles, only: [:index, :new, :create, :show]
 
-  resources :topics, shallow: true do
+  resources :topics do
     resources :topiccomments, only: [:new, :create]
   end
-
 end

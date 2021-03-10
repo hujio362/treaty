@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_174129) do
+ActiveRecord::Schema.define(version: 2021_03_04_083806) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -90,8 +90,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_174129) do
     t.string "name", null: false
     t.text "text", null: false
     t.bigint "user_id", null: false
-    t.bigint "circle_id", null: false
-    t.index ["circle_id"], name: "index_topics_on_circle_id"
+    t.integer "category_id"
     t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
@@ -122,6 +121,5 @@ ActiveRecord::Schema.define(version: 2021_02_09_174129) do
   add_foreign_key "posts", "users"
   add_foreign_key "topiccomments", "topics"
   add_foreign_key "topiccomments", "users"
-  add_foreign_key "topics", "circles"
   add_foreign_key "topics", "users"
 end

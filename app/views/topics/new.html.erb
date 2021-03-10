@@ -21,6 +21,11 @@
     </div>
 
     <div class="new-items">
+       <div class="weight-bold-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
       <div class="weight-bold-text">
         タイトル
         <span class="indispensable">必須</span>

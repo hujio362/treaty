@@ -1,22 +1,17 @@
 <%= image_tag @circle.image, class: "img-fluid"%>
 <div class="text-center">
-  <h1 class="display-3 my-3"><%= @circle.name %></h1>
+  <h1 class="display-4 my-3"><%= @circle.name %></h1>
 <span class="badge rounded-pill bg-light text-dark"><%= @circle.category.name %></span>
 <p class="my-0.5">131 members</p>
 <p class="lead my-3"><%= @circle.explanation %></p>
 </div>
-
-<%= link_to new_topic_path do %>
-<button type="button" class="btn btn-outline-danger mx-auto d-block my-3">参加する</button>
-<% end %>
+<%# 
+<%= link_to new_circle_topic_path do %>
+<%# <button type="button" class="btn btn-outline-danger mx-auto d-block my-3">参加する</button> %>
 
 <div class="text-center">
-  <p class="display-4 mt-5">TOPIC</p>
-<ul>
-  <li>- はじめまして！</li>
-  <li>- 利用規約</li>
-  <li>- パーティ参加者募集！</li>  
-</ul>
+  <p class="display-4 mt-5">topics</p>
+
 
 <%= link_to(new_topic_path, class: 'purchase-btn') do %>
   <span class='purchase-btn-text'>投稿する</span>
