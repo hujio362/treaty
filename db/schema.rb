@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_042620) do
+ActiveRecord::Schema.define(version: 2021_03_04_083806) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2021_01_09_042620) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "circle_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "circle_id", null: false
+    t.index ["circle_id"], name: "index_circle_users_on_circle_id"
+    t.index ["user_id"], name: "index_circle_users_on_user_id"
   end
 
   create_table "circles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,6 +74,26 @@ ActiveRecord::Schema.define(version: 2021_01_09_042620) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "topiccomments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "topic_id", null: false
+    t.index ["topic_id"], name: "index_topiccomments_on_topic_id"
+    t.index ["user_id"], name: "index_topiccomments_on_user_id"
+  end
+
+  create_table "topics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name", null: false
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.integer "category_id"
+    t.index ["user_id"], name: "index_topics_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "first_name", null: false
@@ -84,8 +113,13 @@ ActiveRecord::Schema.define(version: 2021_01_09_042620) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "circle_users", "circles"
+  add_foreign_key "circle_users", "users"
   add_foreign_key "circles", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "topiccomments", "topics"
+  add_foreign_key "topiccomments", "users"
+  add_foreign_key "topics", "users"
 end

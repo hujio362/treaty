@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
+
   root to: "homes#index"
   devise_for :users
-  resources :posts do
+ 
+  resources :posts, shallow: true do
     post 'add' => 'favorites#create'
     delete '/add' => 'favorites#destroy'
+    resources :comments, only: [:new, :create]
   end
-  # do
-    # resources :orders, only: [:index, :create, :show]
-  # end
+ 
+  resources :circles, only: [:index, :new, :create, :show]
+
+  resources :topics do
+    resources :topiccomments, only: [:new, :create]
+  end
 end

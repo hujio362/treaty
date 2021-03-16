@@ -73,7 +73,7 @@ admin
 has_many :posts
 has_many :comments
 has_many :circles
-has_many :threads
+has_many :topics
 
 ## Posts
 |Column|Type|Options|
@@ -82,7 +82,7 @@ has_many :threads
 |category_id|integer|null:false|
 |keyword_id|integer||
 |explanation|text|null:false|
-|user|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -92,35 +92,58 @@ has_many :comments
 |Column|Type|Options|
 |------|----|-------|
 |text|text|null:false|
-|user|references|foreign_key: true|
-|post|references|foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|post|references|null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
 belongs_to :post
 
 ## Circles 
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null:false|
-|category_id|integer|null:false|
-|keyword_id|integer||
-|explanation|text|null:false|
-|user|references|foreign_key: true|
+|Column     |Type      |Options          |
+|-----------|----------|-----------------|
+|name       |string    |null:false       |
+|category_id|integer   |null:false       |
+|keyword_id |integer   |                 |
+|explanation|text      |null:false       |
+|user       |references|null: false, foreign_key: true|
 
 ### Association
 has_many :users
-has_many :thread
+has_many :topics
 
-## Threads
+## circle_users テーブル
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| circle | references | null: false, foreign_key: true |
+
+### Association
+belongs_to :circle
+belongs_to :user
+
+## Topic
 |Column|Type|Options|
 |------|----|-------|
+|name|string|null:false|
 |text|text|null:false|
 |user|references|foreign_key: true|
 |circle|references|foreign_key: true|
 
 ### Association
 belongs_to :circle
+belongs_to :user
+has_many :topiccpmments
+
+## TopicComments
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null:false|
+|user|references|null: false, foreign_key: true|
+|topic|references|null: false, foreign_key: true|
+
+### Association
+belongs_to :topic
 belongs_to :user
 
 
