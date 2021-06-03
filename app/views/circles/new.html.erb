@@ -3,61 +3,61 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">新規サークル</h2>
-    <%= form_with (model: [@circle, @topic], local: true) do |f| %>
+    <%= form_with model: @circle, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: f.object %>
-   
-   
-    <div class="img-upload">
-      <div class="weight-bold-text">
-        トップ画像
-        <span class="indispensable">必須</span>
-      </div>
-      <div class="click-upload">
-        <p>
-          クリックしてファイルをアップロード
-        </p>
-        <%= f.file_field :image, id:"item-image" %>
-      </div>
-    </div>
-
-    <div class="new-items">
-      <div class="weight-bold-text">
-        タイトル
-        <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
-      <div class="items-explain">
+      <%= render 'shared/error_messages', model: f.object %>
+    
+    
+      <div class="img-upload">
         <div class="weight-bold-text">
-          説明
+          トップ画像
           <span class="indispensable">必須</span>
         </div>
-        <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"サークルページのTOPに表示されます。" ,rows:"7" ,maxlength:"1000" %>
+        <div class="click-upload">
+          <p>
+            クリックしてファイルをアップロード
+          </p>
+          <%= f.file_field :image, id:"item-image" %>
+        </div>
       </div>
-    </div>
 
-    <div class="items-detail">
-      <div class="weight-bold-text">詳細</div>
-      <div class="form">
+      <div class="new-items">
         <div class="weight-bold-text">
-          カテゴリー
+          タイトル
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
-        <div class="weight-bold-text">
-          キーワード
-          <span class="indispensable">必須</span>
+        <%= f.text_area :name, class:"items-text", id:"item-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+        <div class="items-explain">
+          <div class="weight-bold-text">
+            説明
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.text_area :explanation, class:"items-text", id:"item-info", placeholder:"サークルページのTOPに表示されます。" ,rows:"7" ,maxlength:"1000" %>
         </div>
-        <%= f.collection_select(:keyword_id, Keyword.all, :id, :name, {}, {class:"select-box", id:"post-keyword"}) %>
       </div>
-    </div>
 
-    <div class="sell-btn-contents">
-      <%= f.submit "つくる" ,class:"sell-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <div class="items-detail">
+        <div class="weight-bold-text">詳細</div>
+        <div class="form">
+          <div class="weight-bold-text">
+            カテゴリー
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box", id:"post-category"}) %>
+          <div class="weight-bold-text">
+            キーワード
+            <span class="indispensable">必須</span>
+          </div>
+          <%= f.collection_select(:keyword_id, Keyword.all, :id, :name, {}, {class:"select-box", id:"post-keyword"}) %>
+        </div>
+      </div>
+
+      <div class="sell-btn-contents">
+        <%= f.submit "つくる" ,class:"sell-btn" %>
+        <%=link_to 'もどる', root_path, class:"back-btn" %>
+      </div>
+      <%# /下部ボタン %>
     </div>
-    <%# /下部ボタン %>
-  </div>
   <% end %>
 
 </div>

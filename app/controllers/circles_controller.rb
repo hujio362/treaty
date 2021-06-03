@@ -28,6 +28,6 @@ class CirclesController < ApplicationController
   end
 
   def circle_params
-    params.require(:circle).permit(:name, :category_id, :keyword_id, :explanation, :image).merge(user_id: current_user.id)
+    params.require(:circle).permit(:name, :category_id, :keyword_id, :explanation, :image)
   end
 end
